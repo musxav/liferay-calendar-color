@@ -69,10 +69,10 @@ for (int i = 0; i < results.size(); i++) {
 	// Date
 
 	if (event.isTimeZoneSensitive()) {
-		row.addSearchEntry(TextSearchEntryExt.newEntry(dateFormatDate.format(Time.getDate(event.getStartDate(), timeZone)), rowURL, colorEvent));
+		row.addSearchEntry(calColorTextEntryExt.newEntry(dateFormatDate.format(Time.getDate(event.getStartDate(), timeZone)), rowURL, colorEvent));
 	}
 	else {
-		row.addSearchEntry(TextSearchEntryExt.newEntry(dateFormatDate.format(Time.getDate(event.getStartDate(), TimeZoneUtil.getDefault())), rowURL, colorEvent));
+		row.addSearchEntry(calColorTextEntryExt.newEntry(dateFormatDate.format(Time.getDate(event.getStartDate(), TimeZoneUtil.getDefault())), rowURL, colorEvent));
 	}
 
 	// Time
@@ -80,21 +80,21 @@ for (int i = 0; i < results.size(); i++) {
 	boolean allDay = CalUtil.isAllDay(event, timeZone, locale);
 
 	if (allDay) {
-		row.addSearchEntry(TextSearchEntryExt.newEntry(LanguageUtil.get(pageContext, "all-day"), rowURL, colorEvent));
+		row.addSearchEntry(calColorTextEntryExt.newEntry(LanguageUtil.get(pageContext, "all-day"), rowURL, colorEvent));
 	}
 	else {
 		if (event.isTimeZoneSensitive()) {
-			row.addSearchEntry(TextSearchEntryExt.newEntry(dateFormatTime.format(Time.getDate(event.getStartDate(), timeZone)) + " &#150; " + dateFormatTime.format(Time.getDate(CalUtil.getEndTime(event), timeZone)), rowURL, colorEvent));
+			row.addSearchEntry(calColorTextEntryExt.newEntry(dateFormatTime.format(Time.getDate(event.getStartDate(), timeZone)) + " &#150; " + dateFormatTime.format(Time.getDate(CalUtil.getEndTime(event), timeZone)), rowURL, colorEvent));
 		}
 		else {
-			row.addSearchEntry(TextSearchEntryExt.newEntry(dateFormatTime.format(Time.getDate(event.getStartDate(), TimeZoneUtil.getDefault())) + " &#150; " + dateFormatTime.format(Time.getDate(CalUtil.getEndTime(event), TimeZoneUtil.getDefault())), rowURL, colorEvent));
+			row.addSearchEntry(calColorTextEntryExt.newEntry(dateFormatTime.format(Time.getDate(event.getStartDate(), TimeZoneUtil.getDefault())) + " &#150; " + dateFormatTime.format(Time.getDate(CalUtil.getEndTime(event), TimeZoneUtil.getDefault())), rowURL, colorEvent));
 		}
 	}
 
 	// Title and type
 
-    row.addSearchEntry(TextSearchEntryExt.newEntry(event.getTitle(), rowURL, colorEvent));
-    row.addSearchEntry(TextSearchEntryExt.newEntry(LanguageUtil.get(pageContext, HtmlUtil.unescape(event.getType())), rowURL, colorEvent));
+    row.addSearchEntry(calColorTextEntryExt.newEntry(event.getTitle(), rowURL, colorEvent));
+    row.addSearchEntry(calColorTextEntryExt.newEntry(LanguageUtil.get(pageContext, HtmlUtil.unescape(event.getType())), rowURL, colorEvent));
 
 	// Details
 

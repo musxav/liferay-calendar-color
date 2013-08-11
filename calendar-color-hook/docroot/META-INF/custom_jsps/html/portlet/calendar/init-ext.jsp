@@ -14,11 +14,13 @@
  */
 --%>
 
-<%@ page import="com.liferay.portal.kernel.dao.search.TextSearchEntryExt" %>
+<%@ include file="/html/portlet/calendar/TextSearchEntryExt.jsp" %>
 
 <%
 
-String colorTypes = preferences.getValue("colorTypes", com.liferay.portal.util.PropsUtil.getProperties().getProperty("calendar.event.types.color"));
+String colorTypes = preferences.getValue("colorTypes", 
+	   com.liferay.portal.util.PropsUtil.getProperties().getProperty(
+		   "calendar.event.types.color"));
 
 if (colorTypes.equals("*")) {
 	StringBuffer stb = new StringBuffer(100);
@@ -30,10 +32,17 @@ if (colorTypes.equals("*")) {
 	colorTypes = stb.substring(0, stb.length()-2);
 }
 		 
-boolean hiddenHoursCalendarDay = GetterUtil.getBoolean(preferences.getValue("hiddenHoursCalendarDay", "false"));
+boolean hiddenHoursCalendarDay = GetterUtil.getBoolean(
+	   preferences.getValue("hiddenHoursCalendarDay", "false"));
 
-int initialHourToHidden = GetterUtil.getInteger(preferences.getValue("initialHourToHidden", "0"));
-int finalHourToHidden = GetterUtil.getInteger(preferences.getValue("finalHourToHidden", "6"));
+int initialHourToHidden = GetterUtil.getInteger(
+	   preferences.getValue("initialHourToHidden", "0"));
+int finalHourToHidden = GetterUtil.getInteger(
+	   preferences.getValue("finalHourToHidden", "6"));
+
+	
+TextSearchEntryExt calColorTextEntryExt = new TextSearchEntryExt();	
+
 
 %>
 
